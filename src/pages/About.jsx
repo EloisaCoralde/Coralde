@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import users from "../data/users";
 
+// Keep feature descriptions together so the list can render consistently.
 const features = [
   {
     title: "Directory and profiles",
@@ -21,6 +22,7 @@ const features = [
 ];
 
 export default function About() {
+  // Explain what the app does and provide a route to explore the sample users.
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-gray-50 px-4 py-12 text-gray-900 dark:bg-gray-900 dark:text-gray-100 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl">
@@ -42,6 +44,7 @@ export default function About() {
           <h2 id="features-heading" className="text-xl font-semibold text-gray-900 dark:text-white">
             What you can do
           </h2>
+          {/* Render each feature from the shared description list above. */}
           <div className="mt-4 divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800">
             {features.map((feature) => (
               <article key={feature.title} className="p-5 sm:p-6">
@@ -56,6 +59,7 @@ export default function About() {
           </div>
         </section>
 
+        {/* Show the current directory size and link to the full list. */}
         <section className="mt-8 flex flex-col gap-4 rounded-xl bg-blue-50 p-6 dark:bg-gray-800 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="font-semibold text-gray-900 dark:text-white">

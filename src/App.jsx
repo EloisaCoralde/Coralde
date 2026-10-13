@@ -6,10 +6,12 @@ import viteLogo from './assets/vite.svg'
 import './App.css'
 
 function App() {
+  // This counter belongs to the original Vite starter screen, not the directory app.
   const [count, setCount] = useState(0)
 
   return (
     <>
+      {/* Starter hero with the Vite and React logos. */}
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -33,6 +35,7 @@ function App() {
 
       <div className="ticks"></div>
 
+      {/* Starter links to Vite and React documentation and community pages. */}
       <section id="next-steps">
         <div id="docs">
           <svg className="icon" role="presentation" aria-hidden="true">

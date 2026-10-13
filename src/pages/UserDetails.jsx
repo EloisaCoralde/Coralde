@@ -5,7 +5,9 @@ import usersData from "../data/users";
 export default function UserDetails(){
   // Read the user ID from the /users/:id route.
   const { id } = useParams();
+  // Look up this route's profile in the local sample data.
   const user = usersData.find(u => String(u.id) === String(id));
+  // Provide a helpful return path if the requested ID does not exist.
   if (!user) {
     return (
       <main className="min-h-[calc(100vh-4rem)] bg-gray-50 px-4 py-12 text-gray-900 dark:bg-gray-900 dark:text-gray-100 sm:px-6">
@@ -25,6 +27,7 @@ export default function UserDetails(){
     );
   }
 
+  // Use the first letters of the name as a compact avatar.
   const initials = user.name
     .split(/\s+/)
     .map((part) => part[0])
@@ -42,6 +45,7 @@ export default function UserDetails(){
           <span aria-hidden="true">&lt;-</span> Back to directory
         </Link>
 
+        {/* Group the selected user's identity and contact fields in a profile card. */}
         <article className="mt-6 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
           <div className="bg-blue-700 px-6 py-8 dark:bg-blue-950 sm:px-8">
             <div className="flex items-center gap-5">

@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 export default function UserCard({ user, isFavorite, onToggleFavorite }) {
   // The parent provides user data and favorite actions; this component renders one user.
+  // Build a short avatar label from the first characters in the user's name.
   const initials = user.name
     .split(/\s+/)
     .map((part) => part[0])
@@ -10,6 +11,7 @@ export default function UserCard({ user, isFavorite, onToggleFavorite }) {
     .slice(0, 2)
     .toUpperCase();
 
+  // Present the user's identity, role, and favorite control in the card header.
   return (
     <article className="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-700 sm:p-6">
       <div className="flex items-start gap-4">
@@ -41,6 +43,7 @@ export default function UserCard({ user, isFavorite, onToggleFavorite }) {
       </div>
 
       <div className="mt-5 border-t border-gray-100 pt-4 dark:border-gray-700">
+        {/* Make email a mailto link and display the user's company. */}
         <p className="text-sm text-gray-600 dark:text-gray-300">{user.company}</p>
         <a
           href={`mailto:${user.email}`}
@@ -50,6 +53,7 @@ export default function UserCard({ user, isFavorite, onToggleFavorite }) {
         </a>
       </div>
 
+      {/* Open the matching route to show the full user profile. */}
       <Link
         to={`/users/${user.id}`}
         className="mt-5 inline-flex w-fit items-center gap-1 font-semibold text-blue-700 hover:text-blue-900 hover:underline focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:text-blue-300 dark:hover:text-blue-200 dark:focus-visible:outline-blue-300"

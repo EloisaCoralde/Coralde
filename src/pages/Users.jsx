@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 
 export default function Users({ favorites, setFavorites }){
+  // Track the directory data, current search, and loading/error feedback.
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
@@ -14,11 +15,15 @@ export default function Users({ favorites, setFavorites }){
   // Simulate an asynchronous load, and clear the timer if the page unmounts early.
   useEffect(()=>{
     setLoading(true);
+    // Simulate an async request before showing the local sample records.
     const t = setTimeout(()=>{
       try{
         setUsers(usersData);
         setError(null);
-      } catch(e){ setError('Failed to load users') }
+      } catch(e){
+        // Keep an unexpected loading failure visible instead of hiding it.
+        setError('Failed to load users')
+      }
       setLoading(false);
     }, 1000);
     return ()=> clearTimeout(t);
@@ -26,11 +31,13 @@ export default function Users({ favorites, setFavorites }){
 
   // Match names without case sensitivity as the search text changes.
   const filtered = users.filter(u => u.name.toLowerCase().includes(query.toLowerCase()));
+  // Return status UI before rendering the directory while data is pending or failed.
   if (loading) return <Loader />;
   if (error) return <ErrorMessage>{error}</ErrorMessage>;
 
   // Update favorites immutably so React can detect the state change.
   const toggle = (id) => {
+    // Add or remove IDs immutably so React can update the favorite state.
     if (favorites.includes(id)) setFavorites(prev => prev.filter(x=>x!==id));
     else setFavorites(prev => [...prev, id]);
   }
@@ -54,6 +61,7 @@ export default function Users({ favorites, setFavorites }){
             <span className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-200">
               Search by name
             </span>
+            {/* This controlled input updates the name filter as the user types. */}
             <input
               type="search"
               value={query}
@@ -73,6 +81,7 @@ export default function Users({ favorites, setFavorites }){
           </span>
         </div>
 
+        {/* Render cards for matches, or offer a one-click way to clear the search. */}
         {filtered.length ? (
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map(u => (

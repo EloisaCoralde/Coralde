@@ -1,5 +1,6 @@
 ﻿// src/data/users.js
 // Local sample data used by the directory; each record has a unique ID for routing.
+// Keep record fields consistent because cards and profile pages read them directly.
 const users = [
   { id: 1, name: 'Eloisa Coralde', email: 'eloisa.coralde@example.com', company: 'Acme Co.', role: 'Engineer' },
   { id: 2, name: 'Rosalia Morfe', email: 'rosalia.morfe@example.com', company: 'Beta LLC', role: 'Designer' },

@@ -10,14 +10,15 @@ import NotFound from './pages/NotFound'
 import Navbar from './components/Navbar'
 
 function App(){
-  // Keep theme and favorites at the top level so the navbar and pages share them.
+  // Store shared UI state here so the navbar and directory page stay in sync.
   const [dark, setDark] = useState(false);
   const [favorites, setFavorites] = useState([]);
   return (
     <BrowserRouter>
       <div className={`${dark ? 'dark' : ''} min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100`}>
+        {/* Pass the shared theme and favorite count to the navigation controls. */}
         <Navbar dark={dark} onToggleDark={()=>setDark(d=>!d)} favoritesCount={favorites.length} />
-        {/* Route URLs to their page components; unmatched paths show the 404 page. */}
+        {/* Map browser paths to pages; the wildcard handles unknown URLs. */}
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/users" element={<Users favorites={favorites} setFavorites={setFavorites} />} />
@@ -30,4 +31,5 @@ function App(){
   )
 }
 
+// Mount the React application into the root element declared in index.html.
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)

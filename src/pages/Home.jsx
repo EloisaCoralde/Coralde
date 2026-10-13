@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import users from "../data/users";
 
 export default function Home() {
+  // Show an introduction, app features, and a link to the directory.
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-gray-50 px-4 py-12 text-gray-900 dark:bg-gray-900 dark:text-gray-100 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-5xl">
@@ -19,6 +20,7 @@ export default function Home() {
             quick reference.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
+            {/* Link directly to the searchable list of team members. */}
             <Link
               to="/users"
               className="rounded-lg bg-blue-700 px-5 py-3 font-semibold text-white transition hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:focus-visible:outline-blue-300"
@@ -31,6 +33,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Summarize the main directory features for first-time visitors. */}
         <section aria-label="Directory features" className="mt-8 grid gap-5 sm:grid-cols-3">
           <article className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
             <h2 className="font-semibold text-gray-900 dark:text-white">Find teammates</h2>

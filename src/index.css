@@ -1,3 +1,4 @@
 @import "tailwindcss";
 
+/* Let the app's manually toggled .dark class activate Tailwind dark: variants. */
 @custom-variant dark (&:where(.dark, .dark *));
