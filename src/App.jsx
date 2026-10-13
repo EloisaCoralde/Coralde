@@ -1,3 +1,4 @@
+// Original Vite starter screen; the running Team Directory is assembled in main.jsx.
 import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'

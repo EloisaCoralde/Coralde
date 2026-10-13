@@ -6,6 +6,7 @@ export default function Navbar({ dark, onToggleDark, favoritesCount }) {
   return (
     <nav className="bg-gray-100 dark:bg-gray-800 p-4 flex items-center justify-between">
       <div className="space-x-4">
+        {/* NavLink exposes its active state so the current page can be highlighted. */}
         <NavLink to="/" className={({isActive}) => isActive ? 'font-bold' : ''}>Home</NavLink>
         <NavLink to="/users" className={({isActive}) => isActive ? 'font-bold' : ''}>Users</NavLink>
         <NavLink to="/about" className={({isActive}) => isActive ? 'font-bold' : ''}>About</NavLink>
